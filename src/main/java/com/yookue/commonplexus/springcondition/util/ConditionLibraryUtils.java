@@ -20,7 +20,7 @@ package com.yookue.commonplexus.springcondition.util;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.regex.Pattern;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionMessage;

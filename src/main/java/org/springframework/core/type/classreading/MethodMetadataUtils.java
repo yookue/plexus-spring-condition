@@ -17,15 +17,15 @@
 package org.springframework.core.type.classreading;
 
 
-import java.lang.reflect.Method;
 import java.util.Arrays;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.springframework.core.annotation.MergedAnnotation;
 import org.springframework.core.annotation.MergedAnnotations;
 import org.springframework.core.type.MethodMetadata;
 import org.springframework.core.type.StandardMethodMetadata;
+import org.springframework.core.type.StandardMethodMetadataUtils;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 
 /**
@@ -44,12 +44,6 @@ public abstract class MethodMetadataUtils {
         return new SimpleMethodMetadata(methodName, access, declaringClassName, returnTypeName, source, annotations);
     }
 
-    @Nonnull
-    @SuppressWarnings("deprecation")
-    public static StandardMethodMetadata createStandardMetadata(@Nonnull Method introspectedMethod, boolean nestedAnnotationsAsMap) {
-        return new StandardMethodMetadata(introspectedMethod, nestedAnnotationsAsMap);
-    }
-
     @Nullable
     public static MethodMetadata renewMetadataAnnotation(@Nonnull MethodMetadata metadata, @Nonnull MergedAnnotation<?>... annotations) throws IllegalAccessException {
         return renewMetadataAnnotation(metadata, MergedAnnotations.of(Arrays.asList(annotations)));
@@ -61,10 +55,9 @@ public abstract class MethodMetadataUtils {
             int access = (int) FieldUtils.readDeclaredField(metadata, "access", true);    // $NON-NLS-1$
             Object source = FieldUtils.readDeclaredField(metadata, "source", true);    // $NON-NLS-1$
             return createSimpleMetadata(metadata.getMethodName(), access, metadata.getDeclaringClassName(), metadata.getReturnTypeName(), source, annotations);
-        } else if (metadata instanceof StandardMethodMetadata) {
-            Method introspectedMethod = ((StandardMethodMetadata) metadata).getIntrospectedMethod();
+        } else if (metadata instanceof StandardMethodMetadata instance) {
             boolean nestedAnnotationsAsMap = (boolean) FieldUtils.readDeclaredField(metadata, "nestedAnnotationsAsMap", true);    // $NON-NLS-1$
-            StandardMethodMetadata result = createStandardMetadata(introspectedMethod, nestedAnnotationsAsMap);
+            StandardMethodMetadata result = StandardMethodMetadataUtils.createStandardMetadata(instance.getIntrospectedMethod(), nestedAnnotationsAsMap);
             FieldUtils.writeDeclaredField(result, "mergedAnnotations", annotations, true);    // $NON-NLS-1$
             return result;
         }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2024 Yookue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,15 +14,11 @@
  * limitations under the License.
  */
 
-package org.springframework.core.type.classreading;
+package org.springframework.core.type;
 
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-import org.springframework.core.type.AnnotationMetadata;
-import org.springframework.core.type.ClassMetadata;
-import org.springframework.core.type.StandardAnnotationMetadata;
-import org.springframework.core.type.StandardClassMetadata;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 
 /**
@@ -37,7 +33,7 @@ public abstract class ClassMetadataUtils {
     @Nullable
     public static StandardAnnotationMetadata createStandardAnnotationMetadata(@Nonnull Class<?> introspectedClass) {
         AnnotationMetadata metadata = AnnotationMetadata.introspect(introspectedClass);
-        return (metadata instanceof StandardAnnotationMetadata) ? (StandardAnnotationMetadata) metadata : null;
+        return (metadata instanceof StandardAnnotationMetadata instance) ? instance : null;
     }
 
     @Nonnull
@@ -48,12 +44,10 @@ public abstract class ClassMetadataUtils {
 
     @Nullable
     public static ClassMetadata cloneMetadata(@Nonnull ClassMetadata metadata) {
-        if (metadata instanceof StandardAnnotationMetadata) {
-            Class<?> introspectedClass = ((StandardAnnotationMetadata) metadata).getIntrospectedClass();
-            return AnnotationMetadata.introspect(introspectedClass);
-        } else if (metadata instanceof StandardClassMetadata) {
-            Class<?> introspectedClass = ((StandardClassMetadata) metadata).getIntrospectedClass();
-            return createStandardMetadata(introspectedClass);
+        if (metadata instanceof StandardAnnotationMetadata instance) {
+            return AnnotationMetadata.introspect(instance.getIntrospectedClass());
+        } else if (metadata instanceof StandardClassMetadata instance) {
+            return createStandardMetadata(instance.getIntrospectedClass());
         }
         return null;
     }

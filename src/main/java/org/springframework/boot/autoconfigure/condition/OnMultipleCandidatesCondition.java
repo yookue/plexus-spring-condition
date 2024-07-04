@@ -20,7 +20,7 @@ package org.springframework.boot.autoconfigure.condition;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.AnnotationAttributes;
@@ -53,9 +53,9 @@ public class OnMultipleCandidatesCondition extends SpringBootCondition {
             return ConditionOutcome.noMatch(builder.because("annotation attributes of metadata is empty"));    // $NON-NLS-1$
         }
         List<ConditionMessage> matched = new ArrayList<>(), unmatched = new ArrayList<>();
-        if (metadata instanceof AnnotationMetadata) {
+        if (metadata instanceof AnnotationMetadata instance) {
             MergedAnnotation<?> newAnnotation = MergedAnnotation.of(ConditionalOnSingleCandidate.class, attributes);
-            AnnotationMetadata newMetadata = AnnotationMetadataUtils.renewMetadataAnnotationQuietly((AnnotationMetadata) metadata, newAnnotation);
+            AnnotationMetadata newMetadata = AnnotationMetadataUtils.renewMetadataAnnotationQuietly(instance, newAnnotation);
             Assert.notNull(newMetadata, "AnnotationMetadata cloned can not be null");
             SpringBootCondition condition = new OnBeanCondition();
             ConditionOutcome outcome = condition.getMatchOutcome(context, newMetadata);

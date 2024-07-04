@@ -99,7 +99,7 @@ Yookue plexus-spring-condition is a package of powerful condition annotations fo
 
 ## Requirement
 
-- jdk 1.8+
+- jdk 17+
 
 ## License
 

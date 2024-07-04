@@ -17,7 +17,7 @@
 package com.yookue.commonplexus.springcondition;
 
 
-import javax.annotation.Nullable;
+import jakarta.annotation.Nullable;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

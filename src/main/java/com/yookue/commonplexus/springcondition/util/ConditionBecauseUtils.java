@@ -18,7 +18,7 @@ package com.yookue.commonplexus.springcondition.util;
 
 
 import java.lang.annotation.Annotation;
-import javax.annotation.Nonnull;
+import jakarta.annotation.Nonnull;
 import org.springframework.util.ClassUtils;
 
 

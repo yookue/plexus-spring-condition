@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2024 Yookue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,16 @@ package org.springframework.core.type.classreading;
 
 
 import java.util.Arrays;
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.springframework.core.annotation.MergedAnnotation;
 import org.springframework.core.annotation.MergedAnnotations;
 import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.core.type.ClassMetadataUtils;
 import org.springframework.core.type.MethodMetadata;
 import org.springframework.core.type.StandardAnnotationMetadata;
+import com.yookue.commonplexus.javaseutil.util.ArrayUtilsWraps;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 
 
 /**
@@ -40,8 +42,9 @@ import org.springframework.core.type.StandardAnnotationMetadata;
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})
 public abstract class AnnotationMetadataUtils {
     @Nonnull
+    @SuppressWarnings("DataFlowIssue")
     public static AnnotationMetadata createSimpleMetadata(@Nonnull String className, int access, @Nullable String enclosingClassName, @Nullable String superClassName, boolean independentInnerClass, @Nonnull String[] interfaceNames, @Nonnull String[] memberClassNames, @Nonnull MethodMetadata[] annotatedMethods, @Nonnull MergedAnnotations annotations) {
-        return new SimpleAnnotationMetadata(className, access, enclosingClassName, superClassName, independentInnerClass, interfaceNames, memberClassNames, annotatedMethods, annotations);
+        return new SimpleAnnotationMetadata(className, access, enclosingClassName, superClassName, independentInnerClass, ArrayUtilsWraps.asSet(interfaceNames), ArrayUtilsWraps.asSet(memberClassNames), ArrayUtilsWraps.asSet(annotatedMethods), annotations);
     }
 
     @Nullable
@@ -56,8 +59,8 @@ public abstract class AnnotationMetadataUtils {
             boolean independentInnerClass = (boolean) FieldUtils.readDeclaredField(metadata, "independentInnerClass", true);    // $NON-NLS-1$
             MethodMetadata[] annotatedMethods = (MethodMetadata[]) FieldUtils.readDeclaredField(metadata, "annotatedMethods", true);    // $NON-NLS-1$
             return createSimpleMetadata(metadata.getClassName(), access, metadata.getEnclosingClassName(), metadata.getSuperClassName(), independentInnerClass, metadata.getInterfaceNames(), metadata.getMemberClassNames(), annotatedMethods, annotations);
-        } else if (metadata instanceof StandardAnnotationMetadata) {
-            Class<?> introspectedClass = ((StandardAnnotationMetadata) metadata).getIntrospectedClass();
+        } else if (metadata instanceof StandardAnnotationMetadata instance) {
+            Class<?> introspectedClass = instance.getIntrospectedClass();
             boolean nestedAnnotationsAsMap = (boolean) FieldUtils.readDeclaredField(metadata, "nestedAnnotationsAsMap", true);    // $NON-NLS-1$
             StandardAnnotationMetadata result = ClassMetadataUtils.createStandardAnnotationMetadata(introspectedClass);
             if (result != null) {
