@@ -21,7 +21,6 @@ import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import jakarta.annotation.Nullable;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -29,6 +28,7 @@ import org.springframework.beans.PropertyAccessor;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.util.CollectionUtils;
+import jakarta.annotation.Nullable;
 
 
 /**
@@ -40,7 +40,7 @@ import org.springframework.util.CollectionUtils;
 @SuppressWarnings({"unused", "JavadocDeclaration", "JavadocLinkAsPlainText"})
 public abstract class ConditionPropertyUtils {
     @Nullable
-    @SuppressWarnings({"ConstantConditions", "RedundantSuppression"})
+    @SuppressWarnings({"DataFlowIssue", "RedundantSuppression"})
     public static List<String> getCompositePrefixNames(@Nullable AnnotatedTypeMetadata metadata, @Nullable Class<? extends Annotation> condition) {
         return ObjectUtils.anyNull(metadata, condition) ? null : getCompositePrefixNames(metadata, condition.getName());
     }

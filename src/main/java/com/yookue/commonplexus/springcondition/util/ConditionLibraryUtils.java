@@ -20,7 +20,6 @@ package com.yookue.commonplexus.springcondition.util;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 import java.util.regex.Pattern;
-import jakarta.annotation.Nonnull;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionMessage;
@@ -28,6 +27,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
 import com.yookue.commonplexus.javaseutil.util.ClassLoaderWraps;
 import com.yookue.commonplexus.javaseutil.util.RegexUtilsWraps;
 import com.yookue.commonplexus.javaseutil.util.StringUtilsWraps;
+import jakarta.annotation.Nonnull;
 
 
 /**
@@ -38,7 +38,7 @@ import com.yookue.commonplexus.javaseutil.util.StringUtilsWraps;
 @SuppressWarnings("unused")
 public abstract class ConditionLibraryUtils {
     @Nonnull
-    @SuppressWarnings({"ConstantConditions", "RedundantSuppression"})
+    @SuppressWarnings({"DataFlowIssue", "RedundantSuppression"})
     public static ConditionOutcome matchLibraryName(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull ClassLoader classLoader, @Nonnull String libraryName, boolean caseSensitive, boolean regExp) {
         ConditionMessage.Builder builder = ConditionMessage.forCondition(conditionClass);
         String[] loadedLibraries = ClassLoaderWraps.getLoadedLibraryNames(classLoader, false);
