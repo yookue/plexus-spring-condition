@@ -18,6 +18,9 @@ package org.springframework.core.type.classreading;
 
 
 import java.util.Arrays;
+import java.util.Set;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.springframework.core.annotation.MergedAnnotation;
 import org.springframework.core.annotation.MergedAnnotations;
@@ -26,8 +29,6 @@ import org.springframework.core.type.ClassMetadataUtils;
 import org.springframework.core.type.MethodMetadata;
 import org.springframework.core.type.StandardAnnotationMetadata;
 import com.yookue.commonplexus.javaseutil.util.ArrayUtilsWraps;
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 
 
 /**
@@ -43,8 +44,8 @@ import jakarta.annotation.Nullable;
 public abstract class AnnotationMetadataUtils {
     @Nonnull
     @SuppressWarnings("DataFlowIssue")
-    public static AnnotationMetadata createSimpleMetadata(@Nonnull String className, int access, @Nullable String enclosingClassName, @Nullable String superClassName, boolean independentInnerClass, @Nonnull String[] interfaceNames, @Nonnull String[] memberClassNames, @Nonnull MethodMetadata[] annotatedMethods, @Nonnull MergedAnnotations annotations) {
-        return new SimpleAnnotationMetadata(className, access, enclosingClassName, superClassName, independentInnerClass, ArrayUtilsWraps.asSet(interfaceNames), ArrayUtilsWraps.asSet(memberClassNames), ArrayUtilsWraps.asSet(annotatedMethods), annotations);
+    public static AnnotationMetadata createSimpleMetadata(@Nonnull String className, int access, @Nullable String enclosingClassName, @Nullable String superClassName, boolean independentInnerClass, @Nonnull String[] interfaceNames, @Nonnull String[] memberClassNames, @Nonnull Set<MethodMetadata> declaredMethods, @Nonnull MergedAnnotations annotations) {
+        return new SimpleAnnotationMetadata(className, access, enclosingClassName, superClassName, independentInnerClass, ArrayUtilsWraps.asSet(interfaceNames), ArrayUtilsWraps.asSet(memberClassNames), declaredMethods, annotations);
     }
 
     @Nullable
@@ -57,8 +58,7 @@ public abstract class AnnotationMetadataUtils {
         if (metadata instanceof SimpleAnnotationMetadata) {
             int access = (int) FieldUtils.readDeclaredField(metadata, "access", true);    // $NON-NLS-1$
             boolean independentInnerClass = (boolean) FieldUtils.readDeclaredField(metadata, "independentInnerClass", true);    // $NON-NLS-1$
-            MethodMetadata[] annotatedMethods = (MethodMetadata[]) FieldUtils.readDeclaredField(metadata, "annotatedMethods", true);    // $NON-NLS-1$
-            return createSimpleMetadata(metadata.getClassName(), access, metadata.getEnclosingClassName(), metadata.getSuperClassName(), independentInnerClass, metadata.getInterfaceNames(), metadata.getMemberClassNames(), annotatedMethods, annotations);
+            return createSimpleMetadata(metadata.getClassName(), access, metadata.getEnclosingClassName(), metadata.getSuperClassName(), independentInnerClass, metadata.getInterfaceNames(), metadata.getMemberClassNames(), metadata.getDeclaredMethods(), annotations);
         } else if (metadata instanceof StandardAnnotationMetadata instance) {
             Class<?> introspectedClass = instance.getIntrospectedClass();
             boolean nestedAnnotationsAsMap = (boolean) FieldUtils.readDeclaredField(metadata, "nestedAnnotationsAsMap", true);    // $NON-NLS-1$

@@ -21,6 +21,7 @@ import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import jakarta.annotation.Nullable;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +29,6 @@ import org.springframework.beans.PropertyAccessor;
 import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.util.CollectionUtils;
-import jakarta.annotation.Nullable;
 
 
 /**

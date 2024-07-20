@@ -18,14 +18,14 @@ package org.springframework.core.type.classreading;
 
 
 import java.util.Arrays;
+import jakarta.annotation.Nonnull;
+import jakarta.annotation.Nullable;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.springframework.core.annotation.MergedAnnotation;
 import org.springframework.core.annotation.MergedAnnotations;
 import org.springframework.core.type.MethodMetadata;
 import org.springframework.core.type.StandardMethodMetadata;
 import org.springframework.core.type.StandardMethodMetadataUtils;
-import jakarta.annotation.Nonnull;
-import jakarta.annotation.Nullable;
 
 
 /**
