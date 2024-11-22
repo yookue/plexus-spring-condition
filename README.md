@@ -28,6 +28,7 @@ Yookue plexus-spring-condition is a package of powerful condition annotations fo
   - @ConditionalOnMacOs
   - @ConditionalOnMultipleCandidates
   - @ConditionalOnPackage
+  - @ConditionalOnPort
   - @ConditionalOnPropertyPrefix
   - @ConditionalOnUnixOs
   - @ConditionalOnWindowsOs
@@ -77,6 +78,7 @@ Yookue plexus-spring-condition is a package of powerful condition annotations fo
   - @ConditionalOnAnyLibraries
   - @ConditionalOnAnyLocales
   - @ConditionalOnAnyPackages
+  - @ConditionalOnAnyPorts
   - @ConditionalOnAnyProperties
   - @ConditionalOnAnyPropertyPrefixes
   - @ConditionalOnAnyResources

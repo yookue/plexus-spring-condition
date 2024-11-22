@@ -23,6 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
+import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnMacAddressCondition;
 
 
@@ -42,6 +43,15 @@ public @interface ConditionalOnMacAddress {
      *
      * @return the expected mac address
      */
+    @AliasFor(value = "address")
+    String value();
+
+    /**
+     * The string representation of the expected mac address
+     *
+     * @return the expected mac address
+     */
+    @AliasFor(value = "value")
     String address();
 
     /**

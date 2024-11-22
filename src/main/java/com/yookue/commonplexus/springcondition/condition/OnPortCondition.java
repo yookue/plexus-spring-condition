@@ -18,8 +18,8 @@ package com.yookue.commonplexus.springcondition.condition;
 
 
 import java.lang.annotation.Annotation;
+import java.util.Objects;
 import jakarta.annotation.Nonnull;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionMessage;
 import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
 import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
@@ -29,21 +29,21 @@ import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.util.CollectionUtils;
+import com.yookue.commonplexus.javaseutil.util.NumberUtilsWraps;
 import com.yookue.commonplexus.javaseutil.util.StringUtilsWraps;
-import com.yookue.commonplexus.springcondition.annotation.ConditionalOnActiveProfile;
+import com.yookue.commonplexus.springcondition.annotation.ConditionalOnPort;
 import com.yookue.commonplexus.springcondition.util.ConditionBecauseUtils;
 import com.yookue.commonplexus.springutil.util.ApplicationEnvironmentWraps;
 
 
 /**
- * Condition being active when matching the profile profile
+ * Condition being active when matching the server port
  *
  * @author David Hsing
- * @see "org.springframework.context.annotation.ProfileCondition"
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
-public class OnActiveProfileCondition extends SpringBootCondition {
-    private static final Class<? extends Annotation> annotation = ConditionalOnActiveProfile.class;
+public class OnPortCondition extends SpringBootCondition {
+    private static final Class<? extends Annotation> annotation = ConditionalOnPort.class;
 
     @Override
     public ConditionOutcome getMatchOutcome(@Nonnull ConditionContext context, @Nonnull AnnotatedTypeMetadata metadata) {
@@ -52,13 +52,12 @@ public class OnActiveProfileCondition extends SpringBootCondition {
         if (CollectionUtils.isEmpty(attributes)) {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.emptyAttributes(annotation)));
         }
-        String profile = context.getEnvironment().resolvePlaceholders(attributes.getString("profile"));    // $NON-NLS-1$
-        if (StringUtils.isBlank(profile)) {
-            return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("profile")));    // $NON-NLS-1$
+        Integer expectPort = attributes.getNumber("port");    // $NON-NLS-1$
+        if (NumberUtilsWraps.isNotPositive(expectPort)) {
+            return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute("port")));    // $NON-NLS-1$
         }
-        boolean caseSensitive = attributes.getBoolean("caseSensitive");    // $NON-NLS-1$
-        boolean matched = caseSensitive ? ApplicationEnvironmentWraps.containsActiveProfile(context.getEnvironment(), profile) : ApplicationEnvironmentWraps.containsActiveProfileIgnoreCase(context.getEnvironment(), profile);
-        String quotation = StringUtilsWraps.quoteDouble(profile);
-        return matched ? ConditionOutcome.match(builder.available(quotation)) : ConditionOutcome.noMatch(builder.notAvailable(quotation));
+        Integer actualPort = ApplicationEnvironmentWraps.getLocalServerPort(context.getEnvironment());
+        String quotation = StringUtilsWraps.quoteDouble(Objects.toString(actualPort));
+        return expectPort.equals(actualPort) ? ConditionOutcome.match(builder.available(quotation)) : ConditionOutcome.noMatch(builder.notAvailable(quotation));
     }
 }

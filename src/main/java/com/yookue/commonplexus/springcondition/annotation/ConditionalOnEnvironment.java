@@ -24,6 +24,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.annotation.Conditional;
+import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnEnvironmentCondition;
 
 
@@ -43,7 +44,16 @@ public @interface ConditionalOnEnvironment {
      *
      * @return the name of the system environment
      */
-    String name();
+    @AliasFor(value = "environment")
+    String value();
+
+    /**
+     * Returns the name of the system environment
+     *
+     * @return the name of the system environment
+     */
+    @AliasFor(value = "value")
+    String environment();
 
     /**
      * The string representation of the expected value for the environment

@@ -24,37 +24,33 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.core.annotation.AliasFor;
-import com.yookue.commonplexus.springcondition.condition.OnPackageCondition;
+import com.yookue.commonplexus.springcondition.condition.OnPortCondition;
 
 
 /**
- * Annotation being active when matching all the package names
+ * Annotation being active when matching the server port
  *
  * @author David Hsing
  */
 @Target(value = {ElementType.TYPE, ElementType.METHOD})
 @Retention(value = RetentionPolicy.RUNTIME)
 @Documented
-@Conditional(value = OnPackageCondition.class)
+@Conditional(value = OnPortCondition.class)
 @SuppressWarnings("unused")
-public @interface ConditionalOnPackage {
+public @interface ConditionalOnPort {
     /**
-     * The string representation of loaded package names
-     * <p>
-     * Matched when all the package names are matching
+     * The string representation of the expected port
      *
-     * @return the expected package names
+     * @return the expected port
      */
-    @AliasFor(value = "packageName")
-    String[] value();
+    @AliasFor(value = "port")
+    int value();
 
     /**
-     * The string representation of loaded package names
-     * <p>
-     * Matched when all the package names are matching
+     * The string representation of the expected port
      *
-     * @return the expected package names
+     * @return the expected port
      */
     @AliasFor(value = "value")
-    String[] packageName();
+    int port();
 }

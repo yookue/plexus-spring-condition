@@ -23,6 +23,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
+import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnMissingLibraryCondition;
 
 
@@ -44,7 +45,18 @@ public @interface ConditionalOnMissingLibrary {
      *
      * @return the expected library name
      */
-    String name();
+    @AliasFor(value = "library")
+    String value();
+
+    /**
+     * The string representation of loaded library name
+     * <p>
+     * Not including the extension
+     *
+     * @return the expected library name
+     */
+    @AliasFor(value = "value")
+    String library();
 
     /**
      * Specify if the library name is case-sensitive

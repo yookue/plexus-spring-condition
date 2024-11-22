@@ -57,13 +57,13 @@ public class OnLibraryCondition extends SpringBootCondition {
         if (CollectionUtils.isEmpty(attributes)) {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.emptyAttributes(annotation)));
         }
-        String libraryName = attributes.getString("name");    // $NON-NLS-1$
-        if (StringUtils.isBlank(libraryName)) {
-            return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("name")));    // $NON-NLS-1$
+        String library = attributes.getString("library");    // $NON-NLS-1$
+        if (StringUtils.isBlank(library)) {
+            return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("library")));    // $NON-NLS-1$
         }
         boolean caseSensitive = attributes.getBoolean("caseSensitive");    // $NON-NLS-1$
         boolean regExp = attributes.getBoolean("regExp");    // $NON-NLS-1$
         ClassLoader classLoader = ObjectUtils.defaultIfNull(context.getClassLoader(), ClassUtils.getDefaultClassLoader());
-        return ConditionLibraryUtils.matchLibraryName(annotation, "name", classLoader, libraryName, caseSensitive, regExp);    // $NON-NLS-1$
+        return ConditionLibraryUtils.matchLibraryName(annotation, "library", classLoader, library, caseSensitive, regExp);    // $NON-NLS-1$
     }
 }

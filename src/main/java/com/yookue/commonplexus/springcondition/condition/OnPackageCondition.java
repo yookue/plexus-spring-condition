@@ -52,12 +52,12 @@ public class OnPackageCondition extends SpringBootCondition {
         if (CollectionUtils.isEmpty(attributes)) {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.emptyAttributes(annotation)));
         }
-        String[] names = attributes.getStringArray("name");    // $NON-NLS-1$
-        if (ArrayUtils.isEmpty(names)) {
-            return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("name")));    // $NON-NLS-1$
+        String[] packageName = attributes.getStringArray("packageName");    // $NON-NLS-1$
+        if (ArrayUtils.isEmpty(packageName)) {
+            return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("packageName")));    // $NON-NLS-1$
         }
-        boolean matched = PackagePlainWraps.existsAllPackages(names);
-        String delimited = String.format("[%s]", StringUtils.arrayToCommaDelimitedString(names));    // $NON-NLS-1$
+        boolean matched = PackagePlainWraps.existsAllPackages(packageName);
+        String delimited = String.format("[%s]", StringUtils.arrayToCommaDelimitedString(packageName));    // $NON-NLS-1$
         return matched ? ConditionOutcome.match(builder.available(delimited)) : ConditionOutcome.noMatch(builder.notAvailable(delimited));
     }
 }

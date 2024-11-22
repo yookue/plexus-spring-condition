@@ -51,13 +51,13 @@ public class OnEnvironmentCondition extends SpringBootCondition {
         if (CollectionUtils.isEmpty(attributes)) {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.emptyAttributes(annotation)));
         }
-        String environmentName = attributes.getString("name");    // $NON-NLS-1$
-        if (StringUtils.isBlank(environmentName)) {
-            return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("name")));    // $NON-NLS-1$
+        String environment = attributes.getString("environment");    // $NON-NLS-1$
+        if (StringUtils.isBlank(environment)) {
+            return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("environment")));    // $NON-NLS-1$
         }
         String havingValue = attributes.getString("havingValue");    // $NON-NLS-1$
         boolean caseSensitive = attributes.getBoolean("caseSensitive");    // $NON-NLS-1$
         boolean regExp = attributes.getBoolean("regExp");    // $NON-NLS-1$
-        return ConditionEnvironmentUtils.matchEnvironment(ConditionalOnEnvironment.class, "name", environmentName, havingValue, caseSensitive, regExp);    // $NON-NLS-1$
+        return ConditionEnvironmentUtils.matchEnvironment(ConditionalOnEnvironment.class, "environment", environment, havingValue, caseSensitive, regExp);    // $NON-NLS-1$
     }
 }
