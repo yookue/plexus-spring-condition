@@ -40,6 +40,7 @@ import com.yookue.commonplexus.springcondition.util.ConditionPropertyUtils;
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnMissingPropertyCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnMissingProperty.class;
 

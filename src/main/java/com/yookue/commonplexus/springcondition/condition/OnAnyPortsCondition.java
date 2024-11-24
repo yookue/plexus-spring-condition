@@ -29,5 +29,6 @@ import com.yookue.commonplexus.springcondition.annotation.ConditionalOnPort;
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnAnyPortsCondition extends AbstractMatchAnyCondition<ConditionalOnAnyPorts, ConditionalOnPort> {
 }

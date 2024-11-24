@@ -36,12 +36,13 @@ import com.yookue.commonplexus.springutil.util.ApplicationEnvironmentWraps;
 
 
 /**
- * Condition being active when matching the profile profile
+ * Condition being active when matching the profile
  *
  * @author David Hsing
  * @see "org.springframework.context.annotation.ProfileCondition"
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnActiveProfileCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnActiveProfile.class;
 

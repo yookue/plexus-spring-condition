@@ -42,6 +42,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
 @Slf4j
+@SuppressWarnings("unused")
 public class OnLocaleCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnLocale.class;
 

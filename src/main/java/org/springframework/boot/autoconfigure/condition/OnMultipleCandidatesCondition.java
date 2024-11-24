@@ -42,6 +42,7 @@ import com.yookue.commonplexus.springcondition.annotation.ConditionalOnMultipleC
  * @see org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnMultipleCandidatesCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnMultipleCandidates.class;
 

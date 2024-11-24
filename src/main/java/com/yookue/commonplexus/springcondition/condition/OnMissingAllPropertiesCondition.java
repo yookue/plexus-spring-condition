@@ -29,5 +29,6 @@ import com.yookue.commonplexus.springcondition.annotation.ConditionalOnMissingPr
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnMissingAllPropertiesCondition extends AbstractMatchAllCondition<ConditionalOnMissingAllProperties, ConditionalOnMissingProperty> {
 }

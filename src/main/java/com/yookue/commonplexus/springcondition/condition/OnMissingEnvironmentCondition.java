@@ -41,11 +41,11 @@ import com.yookue.commonplexus.springcondition.util.ConditionBecauseUtils;
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnMissingEnvironmentCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnMissingEnvironment.class;
 
     @Override
-    @SuppressWarnings("DuplicatedCode")
     public ConditionOutcome getMatchOutcome(@Nonnull ConditionContext context, @Nonnull AnnotatedTypeMetadata metadata) {
         ConditionMessage.Builder builder = ConditionMessage.forCondition(annotation);
         AnnotationAttributes attributes = AnnotationAttributes.fromMap(metadata.getAnnotationAttributes(annotation.getName()));

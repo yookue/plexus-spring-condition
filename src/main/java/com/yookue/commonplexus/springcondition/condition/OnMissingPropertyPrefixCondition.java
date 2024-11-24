@@ -40,6 +40,7 @@ import com.yookue.commonplexus.springutil.util.PropertyBinderWraps;
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnMissingPropertyPrefixCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnMissingPropertyPrefix.class;
 

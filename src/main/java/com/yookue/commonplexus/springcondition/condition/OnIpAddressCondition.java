@@ -40,6 +40,7 @@ import com.yookue.commonplexus.springcondition.util.ConditionIpAddressUtils;
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnIpAddressCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnIpAddress.class;
 

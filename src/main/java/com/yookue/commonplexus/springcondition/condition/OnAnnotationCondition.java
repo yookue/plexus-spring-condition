@@ -46,6 +46,7 @@ import com.yookue.commonplexus.springutil.support.ClassPathScanningSimpleCompone
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnAnnotationCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnAnnotation.class;
 

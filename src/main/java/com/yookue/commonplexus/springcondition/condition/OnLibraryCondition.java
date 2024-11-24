@@ -45,7 +45,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
 @Slf4j
-@SuppressWarnings({"JavadocDeclaration", "JavadocLinkAsPlainText"})
+@SuppressWarnings({"unused", "JavadocDeclaration", "JavadocLinkAsPlainText"})
 public class OnLibraryCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnLibrary.class;
 

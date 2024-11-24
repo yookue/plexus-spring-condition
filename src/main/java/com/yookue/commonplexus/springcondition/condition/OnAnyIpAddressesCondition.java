@@ -29,5 +29,6 @@ import com.yookue.commonplexus.springcondition.annotation.ConditionalOnIpAddress
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnAnyIpAddressesCondition extends AbstractMatchAnyCondition<ConditionalOnAnyIpAddresses, ConditionalOnIpAddress> {
 }

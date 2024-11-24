@@ -41,6 +41,7 @@ import com.yookue.commonplexus.springcondition.util.ConditionBecauseUtils;
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnMissingFileCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnMissingFile.class;
 

@@ -42,6 +42,7 @@ import com.yookue.commonplexus.springcondition.util.ConditionBecauseUtils;
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnMissingResourceCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnMissingResource.class;
 

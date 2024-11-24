@@ -42,6 +42,7 @@ import com.yookue.commonplexus.springutil.util.ApplicationEnvironmentWraps;
  * @author David Hsing
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)
+@SuppressWarnings("unused")
 public class OnPortCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnPort.class;
 
