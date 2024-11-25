@@ -56,5 +56,5 @@ public @interface ConditionalOnMissingHostname {
      *
      * @return whether the hostname is a regular expression or not
      */
-    boolean regExp() default false;
+    boolean regex() default false;
 }

@@ -58,7 +58,7 @@ public class OnEnvironmentCondition extends SpringBootCondition {
         }
         String havingValue = attributes.getString("havingValue");    // $NON-NLS-1$
         boolean caseSensitive = attributes.getBoolean("caseSensitive");    // $NON-NLS-1$
-        boolean regExp = attributes.getBoolean("regExp");    // $NON-NLS-1$
-        return ConditionEnvironmentUtils.matchEnvironment(ConditionalOnEnvironment.class, "environment", environment, havingValue, caseSensitive, regExp);    // $NON-NLS-1$
+        boolean regex = attributes.getBoolean("regex");    // $NON-NLS-1$
+        return ConditionEnvironmentUtils.matchEnvironment(ConditionalOnEnvironment.class, "environment", environment, havingValue, caseSensitive, regex);    // $NON-NLS-1$
     }
 }

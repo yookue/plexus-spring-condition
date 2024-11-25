@@ -62,8 +62,8 @@ public class OnLibraryCondition extends SpringBootCondition {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("library")));    // $NON-NLS-1$
         }
         boolean caseSensitive = attributes.getBoolean("caseSensitive");    // $NON-NLS-1$
-        boolean regExp = attributes.getBoolean("regExp");    // $NON-NLS-1$
+        boolean regex = attributes.getBoolean("regex");    // $NON-NLS-1$
         ClassLoader classLoader = ObjectUtils.defaultIfNull(context.getClassLoader(), ClassUtils.getDefaultClassLoader());
-        return ConditionLibraryUtils.matchLibraryName(annotation, "library", classLoader, library, caseSensitive, regExp);    // $NON-NLS-1$
+        return ConditionLibraryUtils.matchLibraryName(annotation, "library", classLoader, library, caseSensitive, regex);    // $NON-NLS-1$
     }
 }

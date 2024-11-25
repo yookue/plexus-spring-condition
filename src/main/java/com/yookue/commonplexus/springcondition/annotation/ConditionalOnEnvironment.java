@@ -64,5 +64,5 @@ public @interface ConditionalOnEnvironment {
      *
      * @return whether the environment value is a regular expression or not
      */
-    boolean regExp() default false;
+    boolean regex() default false;
 }

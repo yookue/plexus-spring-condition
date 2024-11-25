@@ -58,5 +58,5 @@ public @interface ConditionalOnMissingLibrary {
      *
      * @return whether the library name is a regular expression or not
      */
-    boolean regExp() default false;
+    boolean regex() default false;
 }

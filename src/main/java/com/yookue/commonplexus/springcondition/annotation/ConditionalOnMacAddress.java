@@ -49,5 +49,5 @@ public @interface ConditionalOnMacAddress {
      *
      * @return whether the mac address is a regular expression or not
      */
-    boolean regExp() default false;
+    boolean regex() default false;
 }

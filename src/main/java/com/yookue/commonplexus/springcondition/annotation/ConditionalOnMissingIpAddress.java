@@ -49,5 +49,5 @@ public @interface ConditionalOnMissingIpAddress {
      *
      * @return whether the ip address is a regular expression or not
      */
-    boolean regExp() default false;
+    boolean regex() default false;
 }

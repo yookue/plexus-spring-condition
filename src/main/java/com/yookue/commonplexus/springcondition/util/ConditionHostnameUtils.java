@@ -37,12 +37,12 @@ import com.yookue.commonplexus.javaseutil.util.StringUtilsWraps;
 public abstract class ConditionHostnameUtils {
     @Nonnull
     @SuppressWarnings("DuplicatedCode")
-    public static ConditionOutcome matchHostname(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull String hostname, boolean caseSensitive, boolean regExp) {
+    public static ConditionOutcome matchHostname(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull String hostname, boolean caseSensitive, boolean regex) {
         ConditionMessage.Builder builder = ConditionMessage.forCondition(conditionClass);
         String exactHost = SystemUtils.getHostName();
         String quotation = StringUtilsWraps.quoteDouble(hostname);
         boolean matched;
-        if (regExp) {
+        if (regex) {
             Pattern pattern = RegexUtilsWraps.compilePattern(hostname, caseSensitive ? 0 : Pattern.CASE_INSENSITIVE);
             if (pattern == null) {
                 return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute(attributeName)));

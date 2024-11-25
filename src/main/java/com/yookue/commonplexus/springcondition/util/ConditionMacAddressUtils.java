@@ -36,7 +36,7 @@ import com.yookue.commonplexus.javaseutil.util.StringUtilsWraps;
 @SuppressWarnings("unused")
 public abstract class ConditionMacAddressUtils {
     @Nonnull
-    public static ConditionOutcome matchMacAddress(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull String macAddress, boolean regExp) {
+    public static ConditionOutcome matchMacAddress(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull String macAddress, boolean regex) {
         ConditionMessage.Builder builder = ConditionMessage.forCondition(conditionClass);
         List<String> localAddresses = InetAddressWraps.getLocalMacAddressQuietly();
         if (CollectionUtils.isEmpty(localAddresses)) {
@@ -44,7 +44,7 @@ public abstract class ConditionMacAddressUtils {
         }
         String quotation = StringUtilsWraps.quoteDouble(macAddress);
         boolean matched;
-        if (regExp) {
+        if (regex) {
             if (!RegexUtilsWraps.isCompilable(macAddress)) {
                 return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute(attributeName)));
             }

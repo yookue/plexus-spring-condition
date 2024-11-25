@@ -36,7 +36,7 @@ import com.yookue.commonplexus.javaseutil.util.StringUtilsWraps;
 @SuppressWarnings("unused")
 public abstract class ConditionIpAddressUtils {
     @Nonnull
-    public static ConditionOutcome matchIpAddress(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull String ipAddress, boolean regExp) {
+    public static ConditionOutcome matchIpAddress(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull String ipAddress, boolean regex) {
         ConditionMessage.Builder builder = ConditionMessage.forCondition(conditionClass);
         String localAddress = InetAddressWraps.getLocalIpAddressQuietly();
         if (StringUtils.isBlank(localAddress)) {
@@ -44,7 +44,7 @@ public abstract class ConditionIpAddressUtils {
         }
         String quotation = StringUtilsWraps.quoteDouble(ipAddress);
         boolean matched;
-        if (regExp) {
+        if (regex) {
             Pattern pattern = RegexUtilsWraps.compilePattern(ipAddress);
             if (pattern == null) {
                 return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute(attributeName)));

@@ -58,10 +58,10 @@ public class OnMissingHostnameCondition extends SpringBootCondition {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("hostname")));    // $NON-NLS-1$
         }
         boolean caseSensitive = attributes.getBoolean("caseSensitive");    // $NON-NLS-1$
-        boolean regExp = attributes.getBoolean("regExp");    // $NON-NLS-1$
-        if (regExp && !RegexUtilsWraps.isCompilable(hostname)) {
+        boolean regex = attributes.getBoolean("regex");    // $NON-NLS-1$
+        if (regex && !RegexUtilsWraps.isCompilable(hostname)) {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute("hostname")));    // $NON-NLS-1$
         }
-        return ConditionOutcome.inverse(ConditionHostnameUtils.matchHostname(annotation, "hostname", hostname, caseSensitive, regExp));    // $NON-NLS-1$
+        return ConditionOutcome.inverse(ConditionHostnameUtils.matchHostname(annotation, "hostname", hostname, caseSensitive, regex));    // $NON-NLS-1$
     }
 }

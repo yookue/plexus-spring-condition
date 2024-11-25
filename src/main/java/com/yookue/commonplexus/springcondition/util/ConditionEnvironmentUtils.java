@@ -38,12 +38,12 @@ import com.yookue.commonplexus.javaseutil.util.StringUtilsWraps;
 public abstract class ConditionEnvironmentUtils {
     @Nonnull
     @SuppressWarnings("DuplicatedCode")
-    public static ConditionOutcome matchEnvironment(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull String environmentName, @Nullable String havingValue, boolean caseSensitive, boolean regExp) {
+    public static ConditionOutcome matchEnvironment(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull String environmentName, @Nullable String havingValue, boolean caseSensitive, boolean regex) {
         ConditionMessage.Builder builder = ConditionMessage.forCondition(conditionClass);
         String quotation = StringUtilsWraps.quoteDouble(environmentName);
         String environmentValue = SystemUtils.getEnvironmentVariable(environmentName, null);
         boolean matched;
-        if (regExp) {
+        if (regex) {
             Pattern pattern = RegexUtilsWraps.compilePattern(havingValue, caseSensitive ? 0 : Pattern.CASE_INSENSITIVE);
             if (pattern == null) {
                 return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute(attributeName)));

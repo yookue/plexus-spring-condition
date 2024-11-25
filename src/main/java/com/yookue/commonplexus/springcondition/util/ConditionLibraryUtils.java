@@ -39,7 +39,7 @@ import com.yookue.commonplexus.javaseutil.util.StringUtilsWraps;
 public abstract class ConditionLibraryUtils {
     @Nonnull
     @SuppressWarnings({"DataFlowIssue", "RedundantSuppression"})
-    public static ConditionOutcome matchLibraryName(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull ClassLoader classLoader, @Nonnull String libraryName, boolean caseSensitive, boolean regExp) {
+    public static ConditionOutcome matchLibraryName(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull ClassLoader classLoader, @Nonnull String libraryName, boolean caseSensitive, boolean regex) {
         ConditionMessage.Builder builder = ConditionMessage.forCondition(conditionClass);
         String[] loadedLibraries = ClassLoaderWraps.getLoadedLibraryNames(classLoader, false);
         if (ArrayUtils.isEmpty(loadedLibraries)) {
@@ -47,7 +47,7 @@ public abstract class ConditionLibraryUtils {
         }
         String quotation = StringUtilsWraps.quoteDouble(libraryName);
         boolean matched;
-        if (regExp) {
+        if (regex) {
             Pattern pattern = RegexUtilsWraps.compilePattern(libraryName, caseSensitive ? 0 : Pattern.CASE_INSENSITIVE);
             if (pattern == null) {
                 return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute(attributeName)));

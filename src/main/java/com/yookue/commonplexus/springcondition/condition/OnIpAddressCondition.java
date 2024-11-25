@@ -56,7 +56,7 @@ public class OnIpAddressCondition extends SpringBootCondition {
         if (StringUtils.isBlank(address)) {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("address")));    // $NON-NLS-1$
         }
-        boolean regExp = attributes.getBoolean("regExp");    // $NON-NLS-1$
-        return ConditionIpAddressUtils.matchIpAddress(annotation, "address", address, regExp);    // $NON-NLS-1$
+        boolean regex = attributes.getBoolean("regex");    // $NON-NLS-1$
+        return ConditionIpAddressUtils.matchIpAddress(annotation, "address", address, regex);    // $NON-NLS-1$
     }
 }
