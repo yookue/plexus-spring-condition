@@ -23,40 +23,19 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
-import com.yookue.commonplexus.springcondition.condition.OnMissingLibraryCondition;
+import com.yookue.commonplexus.springcondition.condition.OnMissingAllEnvironmentsCondition;
 
 
 /**
- * Annotation being active when missing the loaded library name in the classpath
+ * Annotation being active when matching all the {@link com.yookue.commonplexus.springcondition.annotation.ConditionalOnMissingEnvironment}
  *
  * @author David Hsing
  */
 @Target(value = {ElementType.TYPE, ElementType.METHOD})
 @Retention(value = RetentionPolicy.RUNTIME)
 @Documented
-@Conditional(value = OnMissingLibraryCondition.class)
+@Conditional(value = OnMissingAllEnvironmentsCondition.class)
 @SuppressWarnings("unused")
-public @interface ConditionalOnMissingLibrary {
-    /**
-     * The string representation of loaded library name
-     * <p>
-     * Not including the extension
-     *
-     * @return the expected library name
-     */
-    String library();
-
-    /**
-     * Specify if the library name is case-sensitive
-     *
-     * @return whether the library name is case-sensitive or not
-     */
-    boolean caseSensitive() default false;
-
-    /**
-     * Specify if the library name is a regular expression
-     *
-     * @return whether the library name is a regular expression or not
-     */
-    boolean regExp() default false;
+public @interface ConditionalOnMissingAllEnvironments {
+    ConditionalOnMissingEnvironment[] value();
 }

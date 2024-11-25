@@ -23,7 +23,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnActiveProfileCondition;
 
 
@@ -44,15 +43,6 @@ public @interface ConditionalOnActiveProfile {
      *
      * @return the expected profile name
      */
-    @AliasFor(value = "profile")
-    String value();
-
-    /**
-     * The string representation of profile name
-     *
-     * @return the expected profile name
-     */
-    @AliasFor(value = "value")
     String profile();
 
     /**

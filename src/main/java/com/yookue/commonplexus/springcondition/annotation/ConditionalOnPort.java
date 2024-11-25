@@ -23,7 +23,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnPortCondition;
 
 
@@ -43,14 +42,5 @@ public @interface ConditionalOnPort {
      *
      * @return the expected port
      */
-    @AliasFor(value = "port")
-    int value();
-
-    /**
-     * The string representation of the expected port
-     *
-     * @return the expected port
-     */
-    @AliasFor(value = "value")
     int port();
 }

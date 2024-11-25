@@ -23,7 +23,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnHostnameCondition;
 
 
@@ -43,15 +42,6 @@ public @interface ConditionalOnHostname {
      *
      * @return the expected hostname
      */
-    @AliasFor(value = "hostname")
-    String value();
-
-    /**
-     * The string representation of the expected hostname
-     *
-     * @return the expected hostname
-     */
-    @AliasFor(value = "value")
     String hostname();
 
     /**

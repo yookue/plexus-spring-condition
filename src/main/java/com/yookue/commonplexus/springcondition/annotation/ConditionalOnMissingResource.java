@@ -23,7 +23,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnMissingResourceCondition;
 
 
@@ -45,16 +44,5 @@ public @interface ConditionalOnMissingResource {
      *
      * @return the resource paths that must not be present
      */
-    @AliasFor(value = "resources")
-    String[] value() default {};
-
-    /**
-     * The resources that must not be present
-     * <p>
-     * Matched when all the resources are missing
-     *
-     * @return the resource paths that must not be present
-     */
-    @AliasFor(value = "value")
     String[] resources() default {};
 }

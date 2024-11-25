@@ -23,7 +23,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnPropertyPrefixCondition;
 
 
@@ -47,18 +46,5 @@ public @interface ConditionalOnPropertyPrefix {
      *
      * @return the prefixes of properties
      */
-    @AliasFor(value = "prefix")
-    String[] value();
-
-    /**
-     * Returns the prefixes of properties
-     * <p>
-     * Use the dashed notation to specify each property, that is all lower case with a "-" to separate words (e.g. {@code my-long-property})
-     * <p>
-     * Matched when all the package names are matching
-     *
-     * @return the prefixes of properties
-     */
-    @AliasFor(value = "value")
     String[] prefix();
 }

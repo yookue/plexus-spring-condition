@@ -23,7 +23,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnLocaleCondition;
 
 
@@ -43,14 +42,5 @@ public @interface ConditionalOnLocale {
      *
      * @return the locale that may be present, case-insensitive
      */
-    @AliasFor(value = "languageTag")
-    String value();
-
-    /**
-     * The locale that may be present, case-insensitive
-     *
-     * @return the locale that may be present, case-insensitive
-     */
-    @AliasFor(value = "value")
     String languageTag();
 }

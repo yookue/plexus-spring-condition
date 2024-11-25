@@ -23,7 +23,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnFileCondition;
 
 
@@ -43,15 +42,6 @@ public @interface ConditionalOnFile {
      *
      * @return the expected pathname
      */
-    @AliasFor(value = "pathname")
-    String value();
-
-    /**
-     * The string representation of pathname
-     *
-     * @return the expected pathname
-     */
-    @AliasFor(value = "value")
     String pathname();
 
     /**

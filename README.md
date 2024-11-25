@@ -59,6 +59,7 @@ Yookue plexus-spring-condition is a package of powerful condition annotations fo
 - Combination of missing all conditions:
   - @ConditionalOnMissingAllBeans
   - @ConditionalOnMissingAllClasses
+  - @ConditionalOnMissingAllEnvironments
   - @ConditionalOnMissingAllFiles
   - @ConditionalOnMissingAllHostnames
   - @ConditionalOnMissingAllIpAddresses

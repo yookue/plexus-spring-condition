@@ -19,7 +19,7 @@ package com.yookue.commonplexus.springcondition.condition;
 
 import java.lang.annotation.Annotation;
 import jakarta.annotation.Nonnull;
-import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionMessage;
 import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
 import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
@@ -29,7 +29,7 @@ import org.springframework.core.annotation.AnnotationAttributes;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
+import com.yookue.commonplexus.javaseutil.util.StringUtilsWraps;
 import com.yookue.commonplexus.javaseutil.util.SystemUtilsWraps;
 import com.yookue.commonplexus.springcondition.annotation.ConditionalOnMissingEnvironment;
 import com.yookue.commonplexus.springcondition.util.ConditionBecauseUtils;
@@ -46,18 +46,19 @@ public class OnMissingEnvironmentCondition extends SpringBootCondition {
     private static final Class<? extends Annotation> annotation = ConditionalOnMissingEnvironment.class;
 
     @Override
+    @SuppressWarnings("DuplicatedCode")
     public ConditionOutcome getMatchOutcome(@Nonnull ConditionContext context, @Nonnull AnnotatedTypeMetadata metadata) {
         ConditionMessage.Builder builder = ConditionMessage.forCondition(annotation);
         AnnotationAttributes attributes = AnnotationAttributes.fromMap(metadata.getAnnotationAttributes(annotation.getName()));
         if (CollectionUtils.isEmpty(attributes)) {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.emptyAttributes(annotation)));
         }
-        String[] names = attributes.getStringArray("name");    // $NON-NLS-1$
-        if (ArrayUtils.isEmpty(names)) {
-            return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("name")));    // $NON-NLS-1$
+        String environment = attributes.getString("environment");    // $NON-NLS-1$
+        if (StringUtils.isBlank(environment)) {
+            return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("environment")));    // $NON-NLS-1$
         }
-        boolean unmatched = !SystemUtilsWraps.existsAnyVariables(names);
-        String delimited = String.format("[%s]", StringUtils.arrayToCommaDelimitedString(names));    // $NON-NLS-1$
-        return unmatched ? ConditionOutcome.match(builder.notAvailable(delimited)) : ConditionOutcome.noMatch(builder.available(delimited));
+        String quotation = StringUtilsWraps.quoteDouble(environment);
+        boolean unmatched = !SystemUtilsWraps.existsVariable(environment);
+        return unmatched ? ConditionOutcome.match(builder.notAvailable(quotation)) : ConditionOutcome.noMatch(builder.available(quotation));
     }
 }

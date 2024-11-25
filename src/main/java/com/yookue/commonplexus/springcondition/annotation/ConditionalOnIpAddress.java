@@ -23,7 +23,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 import org.springframework.context.annotation.Conditional;
-import org.springframework.core.annotation.AliasFor;
 import com.yookue.commonplexus.springcondition.condition.OnIpAddressCondition;
 
 
@@ -43,15 +42,6 @@ public @interface ConditionalOnIpAddress {
      *
      * @return the expected ip address
      */
-    @AliasFor(value = "address")
-    String value();
-
-    /**
-     * The string representation of the expected ip address
-     *
-     * @return the expected ip address
-     */
-    @AliasFor(value = "value")
     String address();
 
     /**

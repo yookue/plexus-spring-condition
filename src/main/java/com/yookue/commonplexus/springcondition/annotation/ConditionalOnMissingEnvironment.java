@@ -38,11 +38,9 @@ import com.yookue.commonplexus.springcondition.condition.OnMissingEnvironmentCon
 @SuppressWarnings("unused")
 public @interface ConditionalOnMissingEnvironment {
     /**
-     * Returns the names of the system environment variables
-     * <p>
-     * Matched when all the environment variables are missing
+     * Returns the name of the system environment
      *
-     * @return the names of the system environment variables
+     * @return the name of the system environment
      */
-    String[] name();
+    String environment();
 }
