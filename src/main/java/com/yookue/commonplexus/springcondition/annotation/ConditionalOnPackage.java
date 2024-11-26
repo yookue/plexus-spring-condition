@@ -44,5 +44,5 @@ public @interface ConditionalOnPackage {
      *
      * @return the expected package names
      */
-    String[] packageName();
+    String[] packet();
 }
