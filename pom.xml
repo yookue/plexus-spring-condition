@@ -22,7 +22,7 @@
 
     <groupId>com.yookue.commonplexus</groupId>
     <artifactId>plexus-spring-condition</artifactId>
-    <version>3.4.2</version>
+    <version>3.4.3</version>
 
     <name>${project.artifactId}</name>
     <description>Plexus Spring Condition</description>
@@ -48,7 +48,7 @@
         <project.reporting.outputEncoding>${file.encoding}</project.reporting.outputEncoding>
         <project.logo>https://yookue.github.io/assets/ico/logo-icon.svg</project.logo>
 
-        <spring-boot.version>3.4.2</spring-boot.version>
+        <spring-boot.version>3.4.3</spring-boot.version>
 
         <plexus-spring-util.version>3.4.2</plexus-spring-util.version>
 
