@@ -35,6 +35,7 @@ import com.yookue.commonplexus.javaseutil.util.RegexUtilsWraps;
 import com.yookue.commonplexus.springcondition.annotation.ConditionalOnMissingLibrary;
 import com.yookue.commonplexus.springcondition.util.ConditionBecauseUtils;
 import com.yookue.commonplexus.springcondition.util.ConditionLibraryUtils;
+import com.yookue.commonplexus.springcondition.util.ConditionOutcomeUtils;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -67,6 +68,6 @@ public class OnMissingLibraryCondition extends SpringBootCondition {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute("library")));    // $NON-NLS-1$
         }
         ClassLoader classLoader = ObjectUtils.defaultIfNull(context.getClassLoader(), ClassUtils.getDefaultClassLoader());
-        return ConditionOutcome.inverse(ConditionLibraryUtils.matchLibraryName(annotation, "library", classLoader, library, caseSensitive, regex));    // $NON-NLS-1$
+        return ConditionOutcomeUtils.inverse(ConditionLibraryUtils.matchLibraryName(annotation, "library", classLoader, library, caseSensitive, regex));    // $NON-NLS-1$
     }
 }

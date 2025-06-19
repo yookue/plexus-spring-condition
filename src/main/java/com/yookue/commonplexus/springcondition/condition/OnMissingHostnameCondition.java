@@ -33,6 +33,7 @@ import com.yookue.commonplexus.javaseutil.util.RegexUtilsWraps;
 import com.yookue.commonplexus.springcondition.annotation.ConditionalOnMissingHostname;
 import com.yookue.commonplexus.springcondition.util.ConditionBecauseUtils;
 import com.yookue.commonplexus.springcondition.util.ConditionHostnameUtils;
+import com.yookue.commonplexus.springcondition.util.ConditionOutcomeUtils;
 
 
 /**
@@ -62,6 +63,6 @@ public class OnMissingHostnameCondition extends SpringBootCondition {
         if (regex && !RegexUtilsWraps.isCompilable(hostname)) {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute("hostname")));    // $NON-NLS-1$
         }
-        return ConditionOutcome.inverse(ConditionHostnameUtils.matchHostname(annotation, "hostname", hostname, caseSensitive, regex));    // $NON-NLS-1$
+        return ConditionOutcomeUtils.inverse(ConditionHostnameUtils.matchHostname(annotation, "hostname", hostname, caseSensitive, regex));    // $NON-NLS-1$
     }
 }

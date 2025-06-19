@@ -33,6 +33,7 @@ import com.yookue.commonplexus.javaseutil.util.RegexUtilsWraps;
 import com.yookue.commonplexus.springcondition.annotation.ConditionalOnMissingIpAddress;
 import com.yookue.commonplexus.springcondition.util.ConditionBecauseUtils;
 import com.yookue.commonplexus.springcondition.util.ConditionIpAddressUtils;
+import com.yookue.commonplexus.springcondition.util.ConditionOutcomeUtils;
 
 
 /**
@@ -61,6 +62,6 @@ public class OnMissingIpAddressCondition extends SpringBootCondition {
         if (regex && !RegexUtilsWraps.isCompilable(address)) {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute("address")));    // $NON-NLS-1$
         }
-        return ConditionOutcome.inverse(ConditionIpAddressUtils.matchIpAddress(annotation, "address", address, regex));    // $NON-NLS-1$
+        return ConditionOutcomeUtils.inverse(ConditionIpAddressUtils.matchIpAddress(annotation, "address", address, regex));    // $NON-NLS-1$
     }
 }
