@@ -32,6 +32,7 @@ import org.springframework.core.type.StandardMethodMetadataUtils;
  * Utilities for {@link org.springframework.core.type.ClassMetadata}
  *
  * @author David Hsing
+ *
  * @see org.springframework.core.type.classreading.SimpleMethodMetadata
  * @see org.springframework.core.type.classreading.SimpleMethodMetadataReadingVisitor
  * @see org.springframework.core.type.StandardMethodMetadata

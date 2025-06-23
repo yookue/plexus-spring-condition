@@ -32,6 +32,7 @@ import org.springframework.context.annotation.Conditional;
  * Annotation being active when matching multiple candidates
  *
  * @author David Hsing
+ *
  * @see org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate
  */
 @Target(value = {ElementType.TYPE, ElementType.METHOD})

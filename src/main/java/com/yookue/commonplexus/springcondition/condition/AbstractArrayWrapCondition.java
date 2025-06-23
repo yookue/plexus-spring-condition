@@ -50,6 +50,7 @@ import com.yookue.commonplexus.springutil.util.BeanUtilsWraps;
  * Abstract couple wrapper of Spring internal conditions
  *
  * @author David Hsing
+ *
  * @see org.springframework.boot.autoconfigure.condition.AnyNestedCondition
  */
 @SuppressWarnings("unused")

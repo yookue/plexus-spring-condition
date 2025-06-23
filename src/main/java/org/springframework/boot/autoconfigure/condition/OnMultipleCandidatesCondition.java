@@ -39,6 +39,7 @@ import com.yookue.commonplexus.springcondition.annotation.ConditionalOnMultipleC
  * Condition being active when matching multiple candidates
  *
  * @author David Hsing
+ *
  * @see org.springframework.boot.autoconfigure.condition.ConditionalOnSingleCandidate
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)

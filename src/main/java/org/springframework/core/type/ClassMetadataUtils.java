@@ -25,6 +25,7 @@ import jakarta.annotation.Nullable;
  * Utilities for {@link org.springframework.core.type.ClassMetadata}
  *
  * @author David Hsing
+ *
  * @see org.springframework.core.type.ClassMetadata
  * @see org.springframework.core.type.StandardClassMetadata
  */

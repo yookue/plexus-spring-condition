@@ -41,6 +41,7 @@ import lombok.extern.slf4j.Slf4j;
  * Condition being active when matching the loaded library name in the classpath
  *
  * @author David Hsing
+ *
  * @reference "https://stackoverflow.com/questions/1007861/how-do-i-get-a-list-of-jni-libraries-which-are-loaded"
  */
 @Order(value = Ordered.LOWEST_PRECEDENCE - 1000)

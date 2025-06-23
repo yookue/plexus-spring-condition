@@ -25,6 +25,7 @@ import jakarta.annotation.Nonnull;
  * Utilities for {@link org.springframework.core.type.StandardMethodMetadata}
  *
  * @author David Hsing
+ *
  * @see org.springframework.core.type.StandardMethodMetadata
  */
 @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted", "UnusedReturnValue"})

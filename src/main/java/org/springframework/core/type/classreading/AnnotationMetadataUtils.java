@@ -35,6 +35,7 @@ import com.yookue.commonplexus.javaseutil.util.ArrayUtilsWraps;
  * Utilities for {@link org.springframework.core.type.AnnotationMetadata}
  *
  * @author David Hsing
+ *
  * @see org.springframework.core.type.AnnotationMetadata
  * @see org.springframework.core.type.classreading.SimpleAnnotationMetadata
  * @see org.springframework.core.type.classreading.SimpleAnnotationMetadataReadingVisitor

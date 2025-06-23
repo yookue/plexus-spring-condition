@@ -35,6 +35,7 @@ import org.springframework.util.CollectionUtils;
  * Utilities for condition properties
  *
  * @author David Hsing
+ *
  * @reference "https://stackoverflow.com/questions/46118782/spel-conditionalonproperty-string-property-empty-or-nulll"
  */
 @SuppressWarnings({"unused", "JavadocDeclaration", "JavadocLinkAsPlainText"})

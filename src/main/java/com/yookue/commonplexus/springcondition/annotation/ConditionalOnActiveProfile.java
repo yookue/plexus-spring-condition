@@ -30,6 +30,7 @@ import com.yookue.commonplexus.springcondition.condition.OnActiveProfileConditio
  * Annotation being active when matching the profile name
  *
  * @author David Hsing
+ *
  * @see org.springframework.context.annotation.Profile
  */
 @Target(value = {ElementType.TYPE, ElementType.METHOD})
