@@ -38,7 +38,7 @@ public abstract class ConditionMacAddressUtils {
     @Nonnull
     public static ConditionOutcome matchMacAddress(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull String macAddress, boolean regex) {
         ConditionMessage.Builder builder = ConditionMessage.forCondition(conditionClass);
-        List<String> localAddresses = InetAddressWraps.getLocalMacAddressQuietly();
+        List<String> localAddresses = InetAddressWraps.getLocalMacAddresses();
         if (CollectionUtils.isEmpty(localAddresses)) {
             return ConditionOutcome.noMatch(builder.because("the localhost mac address is empty"));
         }

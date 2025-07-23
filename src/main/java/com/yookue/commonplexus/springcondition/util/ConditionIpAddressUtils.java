@@ -38,7 +38,7 @@ public abstract class ConditionIpAddressUtils {
     @Nonnull
     public static ConditionOutcome matchIpAddress(@Nonnull Class<? extends Annotation> conditionClass, @Nonnull String attributeName, @Nonnull String ipAddress, boolean regex) {
         ConditionMessage.Builder builder = ConditionMessage.forCondition(conditionClass);
-        String localAddress = InetAddressWraps.getLocalIpAddressQuietly();
+        String localAddress = InetAddressWraps.getLocalIpAddress();
         if (StringUtils.isBlank(localAddress)) {
             return ConditionOutcome.noMatch(builder.because("the localhost ip address is empty"));
         }
