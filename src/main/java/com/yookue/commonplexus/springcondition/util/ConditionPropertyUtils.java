@@ -49,9 +49,9 @@ public abstract class ConditionPropertyUtils {
     /**
      * Return the extracted string list of condition annotation with 'prefix' and 'name' attributes, join with '.'
      *
-     * @param metadata the metadata of the {@link org.springframework.core.type.AnnotationMetadata class} or {@link org.springframework.core.type.MethodMetadata method} being checked
-     * @param condition annotation which has 'prefix' and 'name' attributes
-     * @return the extracted string list of condition annotation with 'prefix' and 'name' attributes, join with '.'
+     * @param metadata The metadata of the {@link org.springframework.core.type.AnnotationMetadata class} or {@link org.springframework.core.type.MethodMetadata method} being checked
+     * @param condition Annotation which has 'prefix' and 'name' attributes
+     * @return The extracted string list of condition annotation with 'prefix' and 'name' attributes, join with '.'
      */
     @Nullable
     public static List<String> getCompositePrefixNames(@Nullable AnnotatedTypeMetadata metadata, @Nullable String condition) {
