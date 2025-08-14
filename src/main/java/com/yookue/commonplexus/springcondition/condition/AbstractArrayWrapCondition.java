@@ -113,9 +113,9 @@ public abstract class AbstractArrayWrapCondition<W extends Annotation, P extends
             return null;
         }
         List<SpringBootCondition> result = new ArrayList<>(ArrayUtils.getLength(conditional.value()));
-        Arrays.stream(conditional.value()).forEach(element -> {
-            Assert.isAssignable(SpringBootCondition.class, element);
-            result.add(BeanUtilsWraps.instantiateClassQuietly(element, SpringBootCondition.class));
+        Arrays.stream(conditional.value()).forEach(item -> {
+            Assert.isAssignable(SpringBootCondition.class, item);
+            result.add(BeanUtilsWraps.instantiateClassQuietly(item, SpringBootCondition.class));
         });
         return CollectionUtils.isEmpty(result) ? null : result;
     }

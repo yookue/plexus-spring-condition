@@ -52,9 +52,9 @@ public abstract class ConditionLibraryUtils {
             if (pattern == null) {
                 return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.illegalAttribute(attributeName)));
             }
-            matched = Arrays.stream(loadedLibraries).anyMatch(element -> pattern.matcher(element).matches());
+            matched = Arrays.stream(loadedLibraries).anyMatch(item -> pattern.matcher(item).matches());
         } else {
-            matched = Arrays.stream(loadedLibraries).anyMatch(element -> caseSensitive ? StringUtils.equals(element, libraryName) : StringUtils.equalsIgnoreCase(element, libraryName));
+            matched = Arrays.stream(loadedLibraries).anyMatch(item -> caseSensitive ? StringUtils.equals(item, libraryName) : StringUtils.equalsIgnoreCase(item, libraryName));
         }
         return matched ? ConditionOutcome.match(builder.available(quotation)) : ConditionOutcome.noMatch(builder.notAvailable(quotation));
     }

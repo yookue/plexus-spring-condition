@@ -58,7 +58,7 @@ public class OnMissingResourceCondition extends SpringBootCondition {
             return ConditionOutcome.noMatch(builder.because(ConditionBecauseUtils.missingAttribute("resources")));    // $NON-NLS-1$
         }
         ResourceLoader loader = context.getResourceLoader();
-        boolean unmatched = Arrays.stream(resources).filter(StringUtils::hasText).noneMatch(element -> loader.getResource(element).exists());
+        boolean unmatched = Arrays.stream(resources).filter(StringUtils::hasText).noneMatch(item -> loader.getResource(item).exists());
         String delimited = String.format("[%s]", StringUtils.arrayToCommaDelimitedString(resources));    // $NON-NLS-1$
         return unmatched ? ConditionOutcome.match(builder.notAvailable(delimited)) : ConditionOutcome.noMatch(builder.available(delimited));
     }

@@ -73,12 +73,12 @@ public abstract class ConditionPropertyUtils {
         if (ArrayUtils.isEmpty(name)) {
             result.add(prefix);
         } else {
-            Arrays.stream(name).filter(StringUtils::isNotBlank).forEach(element -> {
-                element = StringUtils.trimToNull(element);
+            Arrays.stream(name).filter(StringUtils::isNotBlank).forEach(item -> {
+                item = StringUtils.trimToNull(item);
                 if (StringUtils.isBlank(prefix)) {
-                    result.add(element);
+                    result.add(item);
                 } else {
-                    result.add(StringUtils.join(StringUtils.appendIfMissing(prefix, PropertyAccessor.NESTED_PROPERTY_SEPARATOR), element));
+                    result.add(StringUtils.join(StringUtils.appendIfMissing(prefix, PropertyAccessor.NESTED_PROPERTY_SEPARATOR), item));
                 }
             });
         }
