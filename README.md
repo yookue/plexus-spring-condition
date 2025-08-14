@@ -48,6 +48,7 @@ Yookue plexus-spring-condition is a package of powerful condition annotations fo
 - Combination of all conditions:
   - @ConditionalOnAllAnnotations
   - @ConditionalOnAllBeans
+  - @ConditionalOnAllBooleanProperties
   - @ConditionalOnAllClasses
   - @ConditionalOnAllEnvironments
   - @ConditionalOnAllExpressions
@@ -70,6 +71,7 @@ Yookue plexus-spring-condition is a package of powerful condition annotations fo
   - @ConditionalOnAnyActiveProfiles
   - @ConditionalOnAnyAnnotations
   - @ConditionalOnAnyBeans
+  - @ConditionalOnAnyBooleanProperties
   - @ConditionalOnAnyClasses
   - @ConditionalOnAnyEnvironments
   - @ConditionalOnAnyExpressions
