@@ -93,10 +93,6 @@
             <version>${plexus-spring-util.version}</version>
             <exclusions>
                 <exclusion>
-                    <groupId>commons-io</groupId>
-                    <artifactId>commons-io</artifactId>
-                </exclusion>
-                <exclusion>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>*</artifactId>
                 </exclusion>
