@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2021 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -32,7 +32,7 @@ import org.springframework.core.type.classreading.AnnotationMetadataUtils;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
-import com.yookue.commonplexus.springcondition.annotation.ConditionalOnMultipleCandidates;
+import cn.unikue.commonplexus.springcondition.annotation.ConditionalOnMultipleCandidates;
 
 
 /**

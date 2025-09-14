@@ -1,6 +1,6 @@
 # Plexus Spring Condition
 
-Yookue plexus-spring-condition is a package of powerful condition annotations for Spring.
+Unikue plexus-spring-condition is a package of powerful condition annotations for Spring.
 
 ## Quickstart
 
@@ -8,7 +8,7 @@ Yookue plexus-spring-condition is a package of powerful condition annotations fo
 
 ```xml
     <dependency>
-        <groupId>com.yookue.commonplexus</groupId>
+        <groupId>cn.unikue.commonplexus</groupId>
         <artifactId>plexus-spring-condition</artifactId>
         <version>LATEST</version>
     </dependency>
@@ -100,7 +100,7 @@ Yookue plexus-spring-condition is a package of powerful condition annotations fo
 
 ## Document
 
-- Github: https://github.com/yookue/plexus-spring-condition
+- Github: https://github.com/unikueltd/plexus-spring-condition
 
 ## Requirement
 
@@ -114,12 +114,12 @@ See the `NOTICE.txt` file for required notices and attributions.
 
 ## Donation
 
-You like this package? Then [donate to us](https://yookue.com/donation) to support the development.
+You like this package? Then [donate to us](https://unikue.cn/donation) to support the development.
 
 ## Copyright
 
-Beijing Yookue Network Technology Ltd.
+Beijing Unikue Network Technology Ltd.
 
 ## Website
 
-- Yookue: https://yookue.com
+- Unikue: https://unikue.cn

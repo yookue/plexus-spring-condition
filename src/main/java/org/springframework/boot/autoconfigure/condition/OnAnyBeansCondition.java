@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Yookue Ltd. All rights reserved.
+ * Copyright (c) 2021 Unikue Ltd. All rights reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,8 @@ import jakarta.annotation.Nonnull;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.util.CollectionUtils;
-import com.yookue.commonplexus.springcondition.annotation.ConditionalOnAnyBeans;
-import com.yookue.commonplexus.springcondition.condition.AbstractArrayWrapCondition;
+import cn.unikue.commonplexus.springcondition.annotation.ConditionalOnAnyBeans;
+import cn.unikue.commonplexus.springcondition.condition.AbstractArrayWrapCondition;
 
 
 /**
