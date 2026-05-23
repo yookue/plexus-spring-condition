@@ -24,7 +24,7 @@ import cn.unikue.commonplexus.springcondition.annotation.ConditionalOnAllClasses
 
 
 @TestConfiguration
-class MockApplicationConfig {
+class MockApplicationConfiguration {
     static final String CONDITIONAL_ON_ALL_CLASSES_BEAN = "conditionalOnAllClassesBean";    // $NON-NLS-1$
 
     @Bean(name = CONDITIONAL_ON_ALL_CLASSES_BEAN)
