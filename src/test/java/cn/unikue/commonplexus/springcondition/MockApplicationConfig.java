@@ -24,13 +24,13 @@ import cn.unikue.commonplexus.springcondition.annotation.ConditionalOnAllClasses
 
 
 @TestConfiguration
-class TestApplicationConfig {
+class MockApplicationConfig {
     static final String CONDITIONAL_ON_ALL_CLASSES_BEAN = "conditionalOnAllClassesBean";    // $NON-NLS-1$
 
     @Bean(name = CONDITIONAL_ON_ALL_CLASSES_BEAN)
     @ConditionalOnAllClasses(value = {
         @ConditionalOnClass(name = "org.springframework.boot.test.context.SpringBootTest"),
-        @ConditionalOnClass(value = TestApplicationRunner.class)
+        @ConditionalOnClass(value = MockApplicationInitializer.class)
     })
     public TestingStruct conditionalOnAllClasses() {
         return new TestingStruct();

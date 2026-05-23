@@ -26,13 +26,13 @@ import cn.unikue.commonplexus.javaseutil.constant.AssertMessageConst;
 import cn.unikue.commonplexus.springutil.util.BeanFactoryWraps;
 
 
-@SpringBootTest(classes = {TestApplicationRunner.class, TestApplicationConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
-class AnnotationConditionTest {
+@SpringBootTest(classes = {MockApplicationInitializer.class, MockApplicationConfig.class}, webEnvironment = SpringBootTest.WebEnvironment.NONE)
+class MockApplicationTest {
     @Autowired
     private BeanFactory beanFactory;
 
     @Test
     void conditionalOnAllClasses() {
-        Assertions.assertNotNull(BeanFactoryWraps.getBean(beanFactory, TestApplicationConfig.CONDITIONAL_ON_ALL_CLASSES_BEAN), AssertMessageConst.NOT_NULL);
+        Assertions.assertNotNull(BeanFactoryWraps.getBean(beanFactory, MockApplicationConfig.CONDITIONAL_ON_ALL_CLASSES_BEAN), AssertMessageConst.NOT_NULL);
     }
 }

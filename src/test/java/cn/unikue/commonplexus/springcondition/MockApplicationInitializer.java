@@ -23,8 +23,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-class TestApplicationRunner {
+class MockApplicationInitializer {
     public static void main(@Nullable String[] args) {
-        SpringApplication.run(TestApplicationRunner.class, args);
+        SpringApplication.run(MockApplicationInitializer.class, args);
     }
 }
